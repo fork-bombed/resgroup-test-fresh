@@ -27,7 +27,10 @@ jobs:
       - name: install dependencies
         run: |
           pip install -r src/requirements.txt
-          
+
       - name: execute py script
+        env: 
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ secrets.GITHUB_REPOSITORY }}
         run: |
           python src/github_api.py
