@@ -5,8 +5,6 @@ import release
 import repository
 import yaml, os, sys
 
-CONFIG_NAME = "config.yaml"
-
 def get_lead_time(release: release.Release, repository: repository.Repository) -> timedelta:
     # If there's only one release then get all the commits and compare 
     # to the creation of the repository.
@@ -28,7 +26,7 @@ def get_lead_time(release: release.Release, repository: repository.Repository) -
 
 
 def get_release_template(release: release.Release, repo: repository.Repository) -> str:
-    with open("src/template.md") as file:
+    with open('src/template.md') as file:
         template = file.read()
 
     return template.format(
