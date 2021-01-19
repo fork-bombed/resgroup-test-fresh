@@ -13,7 +13,7 @@ class Github:
         if base_url is not None:
             self.__base_url = base_url
 
-        self.__session.headers.update({"Authorization": f"Token {token}"})
+        self.__session.headers.update({"Authorization": f"Bearer {token}"})
         self.__check_token()
 
     def __check_token(self) -> None:
