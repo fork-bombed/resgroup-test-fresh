@@ -24,8 +24,10 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: 3.8
-
-      - name: execute py script
+      - name: install dependencies
         run: |
           pip install -r src/requirements.txt
+          
+      - name: execute py script
+        run: |
           python src/github_api.py
