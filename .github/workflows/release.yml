@@ -32,6 +32,4 @@ jobs:
         env: 
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
           GITHUB_REPOSITORY: ${{ secrets.GITHUB_REPOSITORY }}
-        run: |
-          echo $GITHUB_REPOSITORY
-      # python src/github_api.py
+        run: python src/github_api.py

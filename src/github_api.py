@@ -46,7 +46,7 @@ if __name__ == "__main__":
         print('Token not found')
         sys.exit(1)
     if os.environ['GITHUB_REPOSITORY']:
-        repo = os.environ['GITHUB_REPOSITORY']
+        repo = os.environ['GITHUB_REPOSITORY'].split('/')[-1]
     else:
         print('Repo not found')
         sys.exit(1)
