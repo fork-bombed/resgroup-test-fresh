@@ -38,15 +38,13 @@ def get_release_template(release: release.Release, repo: repository.Repository) 
 
 
 if __name__ == "__main__":
-    repo = ""
-    token = ""
-    if os.environ['GITHUB_TOKEN']:
-        token = os.environ['GITHUB_TOKEN']
-    else:
+    token = os.environ.get('GITHUB_TOKEN')
+    repo = os.environ.get('GITHUB_REPOSITORY')
+    if not token:
         print('Token not found')
         sys.exit(1)
-    if os.environ['GITHUB_REPOSITORY']:
-        repo = os.environ['GITHUB_REPOSITORY'].split('/')[-1]
+    if repo:
+        repo = repo.split('/')[-1]
     else:
         print('Repo not found')
         sys.exit(1)
