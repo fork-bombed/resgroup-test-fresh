@@ -34,4 +34,4 @@ jobs:
           GITHUB_REPOSITORY: ${{ secrets.GITHUB_REPOSITORY }}
         run: |
           echo $GITHUB_REPOSITORY
-          python src/github_api.py
+      # python src/github_api.py
