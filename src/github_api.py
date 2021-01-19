@@ -3,7 +3,7 @@ import commit
 import github
 import release
 import repository
-import yaml, os, sys
+import os, sys
 
 def get_lead_time(release: release.Release, repository: repository.Repository) -> timedelta:
     # If there's only one release then get all the commits and compare 
