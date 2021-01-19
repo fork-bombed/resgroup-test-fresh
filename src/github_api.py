@@ -28,7 +28,7 @@ def get_lead_time(release: release.Release, repository: repository.Repository) -
 
 
 def get_release_template(release: release.Release, repo: repository.Repository) -> str:
-    with open("template.md") as file:
+    with open("src/template.md") as file:
         template = file.read()
 
     return template.format(
