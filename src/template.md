@@ -1,14 +1,16 @@
 # Release Metrics ({version})
-This is a placeholder template for release metrics
 
-Lead time for change: {lead_time}
+**Lead time for change**: {lead_time}
 
-## Information
-* Lorem ipsum
-* Lorem ipsum
-* Lorem ipsum
+## Release Notes
+* 
 
-## Placeholder
-* Lorem ipsum
-* Lorem ipsum
-* Lorem ipsum
+
+## Code changes/improvements
+* 
+
+## Bug fixes
+* 
+
+## Issue closed
+* 
