@@ -14,7 +14,7 @@ class Github:
             self.__base_url = base_url
 
         self.__session.headers.update({"Authorization": f"Bearer {token}"})
-        self.__check_token()
+#         self.__check_token()
 
     # def __check_token(self) -> None:
     #     response = self.__session.get(self.__base_url + "/user")
