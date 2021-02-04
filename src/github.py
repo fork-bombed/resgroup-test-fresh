@@ -14,16 +14,16 @@ class Github:
             self.__base_url = base_url
 
         self.__session.headers.update({"Authorization": f"Bearer {token}"})
-        self.__check_token()
+    #     self.__check_token()
 
-    def __check_token(self) -> None:
-        response = self.__session.get(self.__base_url + "/user")
+    # def __check_token(self) -> None:
+    #     response = self.__session.get(self.__base_url + "/user")
 
-        if ("message" in response.json() and
-                response.json()["message"] == "Bad credentials"):
-            raise ValueError("The GitHub token provided is invalid.")
+    #     if ("message" in response.json() and
+    #             response.json()["message"] == "Bad credentials"):
+    #         raise ValueError("The GitHub token provided is invalid.")
 
-        self.__username = response.json()["login"]
+    #     self.__username = response.json()["login"]
 
     def get_repository(self, repo_name: str) -> Repository:
         response = self.__session.get(
