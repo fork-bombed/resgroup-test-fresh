@@ -22,9 +22,10 @@ def get_commits_between_releases(
 
 def format_urlsafe_time(td: timedelta) -> str:
     out = []
-    hours = td.seconds//3600
-    minutes = (td.seconds//60)%60
-    if td.days > 0:
+    seconds = abs(td.seconds)
+    hours = seconds//3600
+    minutes = (seconds//60)%60
+    if abs(td.days) > 0:
         out.append(f'{td.days}d')
     if hours > 0:
         out.append(f'{hours}h')
