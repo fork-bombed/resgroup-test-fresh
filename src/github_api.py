@@ -90,8 +90,6 @@ def get_release_template(
         lead_time_difference = ''.join(['--',format_urlsafe_time(prev_lead_time - lead_time)])
         lead_time_difference_colour = 'success'
 
-    print(f'{get_lead_time(prev_release, repo)} : {format_urlsafe_time(get_lead_time(prev_release, repo))} \n {lead_time_difference} : {format_urlsafe_time(lead_time_difference)}')
-
     return template.format(
         version=release.get_tag_name(),
         lead_time=format_urlsafe_time(lead_time),
