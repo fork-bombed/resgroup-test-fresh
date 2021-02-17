@@ -45,6 +45,7 @@ def get_lead_time(
         ]
     else:
         releases = repository.get_releases()
+        print(releases)
         release_index = releases.index(release)
         if release_index:
             if release_index < len(releases)-1:
