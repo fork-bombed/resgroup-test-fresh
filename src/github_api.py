@@ -47,12 +47,10 @@ def get_lead_time(
         releases = repository.get_releases()
         release_index = None
         for index,r in enumerate(releases):
-            print(r.get_id(), release.get_id())
             if r.get_id() == release.get_id():
                 release_index = index
                 break
-        print(f'release index: {release_index}')
-        if release_index:
+        if release_index != None:
             print(release_index, len(releases))
             if release_index < len(releases)-1:
                 prev_release = releases[release_index+1]
@@ -76,7 +74,6 @@ def get_release_template(
 
     with open('src/templates/default.md') as file:
         template = file.read()
-    print('lead time')
     lead_time = get_lead_time(release, repo)
     if lead_time.days >= 30:
         lead_time_colour = 'critical'
@@ -84,7 +81,6 @@ def get_release_template(
         lead_time_colour = 'important'
     else:
         lead_time_colour = 'success'
-    print('lead time difference')
     lead_time_difference = get_lead_time(prev_release, repo) - lead_time
     lead_time_difference_colour = 'critical'
 
