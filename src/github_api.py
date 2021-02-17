@@ -27,9 +27,9 @@ def format_time(td: timedelta) -> str:
     if td.days > 0:
         out.append(f'{td.days}d')
     if hours > 0:
-        out.append(f'{td.hours}h')
+        out.append(f'{hours}h')
     if minutes > 0:
-        out.append(f'{td.minutes}m')
+        out.append(f'{minutes}m')
     return '%20'.join(out)
 
 
