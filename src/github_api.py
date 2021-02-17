@@ -21,17 +21,18 @@ def get_commits_between_releases(
 
 
 def format_urlsafe_time(td: timedelta) -> str:
-    out = []
-    seconds = abs(td.seconds)
-    hours = seconds//3600
+    out = ['+' if td.days >= 0 else '--']
+    seconds = td.seconds
     minutes = (seconds//60)%60
-    if abs(td.days) > 0:
-        out.append(f'{td.days}d')
+    hours = (seconds//(60*60))%24
+    days = seconds//(24*60*60)
+    if days > 0:
+        out.append(f'{days}d')
     if hours > 0:
         out.append(f'{hours}h')
     if minutes > 0:
         out.append(f'{minutes}m')
-    return '%20'.join(out).replace('-','--')
+    return '%20'.join(out)
 
 
 def get_lead_time(
@@ -81,8 +82,9 @@ def get_release_template(
         lead_time_colour = 'important'
     else:
         lead_time_colour = 'success'
-    lead_time_difference = lead_time - get_lead_time(prev_release, repo)
-    lead_time_difference_colour = 'critical' if lead_time_difference.seconds > 0 else 'success'
+    prev_lead_time = get_lead_time(prev_release, repo)
+    lead_time_difference = lead_time - prev_lead_time
+    lead_time_difference_colour = 'critical' if lead_time > prev_lead_time else 'success'
 
     print(f'{get_lead_time(prev_release, repo)} : {format_urlsafe_time(get_lead_time(prev_release, repo))} \n {lead_time_difference} : {format_urlsafe_time(lead_time_difference)}')
 
