@@ -52,6 +52,7 @@ def get_lead_time(
                 release_index = index
                 break
         if release_index:
+            print(release_index, len(releases))
             if release_index < len(releases)-1:
                 prev_release = releases[release_index+1]
             else:
