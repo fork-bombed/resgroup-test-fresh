@@ -25,6 +25,9 @@ class Release:
     def get_body_text(self) -> str:
         return self.__body
 
+    def get_id(self) -> int:
+        return self.__id
+
     def update(self, message: str) -> None:
         self.__session.patch(
             url=self.__url,
