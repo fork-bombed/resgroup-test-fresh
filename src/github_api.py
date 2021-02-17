@@ -47,6 +47,7 @@ def get_lead_time(
         releases = repository.get_releases()
         release_index = None
         for index,r in enumerate(releases):
+            print(r.get_id(), release.get_id())
             if r.get_id() == release.get_id():
                 release_index = index
                 break
