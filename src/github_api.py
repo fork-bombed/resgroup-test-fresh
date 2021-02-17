@@ -20,7 +20,7 @@ def get_commits_between_releases(
     return commits
 
 
-def format_time(td: timedelta) -> str:
+def format_urlsafe_time(td: timedelta) -> str:
     out = []
     hours = td.seconds//3600
     minutes = (td.seconds//60)%60
@@ -30,7 +30,7 @@ def format_time(td: timedelta) -> str:
         out.append(f'{hours}h')
     if minutes > 0:
         out.append(f'{minutes}m')
-    return '%20'.join(out)
+    return '%20'.join(out).replace('-','--')
 
 
 def get_lead_time(
@@ -51,7 +51,6 @@ def get_lead_time(
                 release_index = index
                 break
         if release_index != None:
-            print(release_index, len(releases))
             if release_index < len(releases)-1:
                 prev_release = releases[release_index+1]
             else:
@@ -61,7 +60,7 @@ def get_lead_time(
         commits = get_commits_between_releases(release, prev_release, repository)
         commit_times = [
             datetime.timestamp(c.get_date()) - datetime.timestamp(prev_release.get_creation_time())
-            for c in commits    
+            for c in commits
         ]
     return timedelta(seconds=sum(commit_times)/len(commit_times))
 
@@ -86,11 +85,11 @@ def get_release_template(
 
     return template.format(
         version=release.get_tag_name(),
-        lead_time=format_time(lead_time),
+        lead_time=format_urlsafe_time(lead_time),
         lead_time_colour=lead_time_colour,
         prev_version=prev_release.get_tag_name(),
         repository=repo.get_full_name(),
-        lead_time_difference=lead_time_difference,
+        lead_time_difference=format_urlsafe_time(lead_time_difference),
         lead_time_difference_colour=lead_time_difference_colour
     )
 
