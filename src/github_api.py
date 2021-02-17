@@ -87,7 +87,7 @@ if __name__ == "__main__":
     client = github.Github(token)
     repository = client.get_repository(repo)
     release = repository.get_latest_release()
-    prev_release = repository.get_commits()[1]
+    prev_release = repository.get_releases()[1]
     release.update(
         message=get_release_template(
             release=release, 
