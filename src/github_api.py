@@ -21,7 +21,7 @@ def get_commits_between_releases(
 
 
 def format_urlsafe_time(td: timedelta) -> str:
-    out = ['+' if td.days >= 0 else '--']
+    out = ['--' if td.days < 0 ]
     seconds = td.seconds
     minutes = (seconds//60)%60
     hours = (seconds//(60*60))%24
