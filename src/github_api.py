@@ -70,7 +70,7 @@ def get_release_template(
     return template.format(
         version=release.get_tag_name(),
         lead_time=get_lead_time(release, repo),
-        lead_time_color='blue',
+        lead_time_colour='blue',
         prev_version=prev_release.get_tag_name()
     )
 
