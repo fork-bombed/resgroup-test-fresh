@@ -30,7 +30,7 @@ def format_time(td: timedelta) -> str:
         out.append(f'{td.hours}h')
     if minutes > 0:
         out.append(f'{td.minutes}m')
-    return ' '.join(out)
+    return '%20'.join(out)
 
 
 def get_lead_time(
@@ -69,7 +69,7 @@ def get_release_template(
 
     return template.format(
         version=release.get_tag_name(),
-        lead_time=get_lead_time(release, repo),
+        lead_time=format_time(get_lead_time(release, repo)),
         lead_time_colour='blue',
         prev_version=prev_release.get_tag_name()
     )
