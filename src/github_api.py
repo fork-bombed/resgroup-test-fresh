@@ -24,8 +24,8 @@ def format_urlsafe_time(td: timedelta) -> str:
     out = []
     seconds = td.seconds
     minutes = (seconds//60)%60
-    hours = (seconds//(60*60))%24
-    days = seconds//(24*60*60)
+    hours = (seconds//3600)%24
+    days = td.days
     if days > 0:
         out.append(f'{days}d')
     if hours > 0:
