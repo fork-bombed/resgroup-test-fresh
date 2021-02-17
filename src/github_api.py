@@ -45,16 +45,11 @@ def get_lead_time(
         ]
     else:
         previous_release = repository.get_releases()[1]
-        # commits = [
-        #     datetime.timestamp(c.get_date()) - datetime.timestamp(previous_created)
-        #     for c in repository.get_commits() if c.get_date() >= previous_created
-        # ]
         commits = get_commits_between_releases(release, previous_release, repository)
         commit_times = [
             datetime.timestamp(c.get_date()) - datetime.timestamp(previous_release.get_creation_time())
             for c in commits    
         ]
-
     return timedelta(seconds=sum(commit_times)/len(commit_times))
 
 
@@ -93,5 +88,5 @@ if __name__ == "__main__":
             release=release, 
             repo=repository,
             prev_release=prev_release
-        )
+        ) + f'\n{release.get_body_text()}'
     )

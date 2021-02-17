@@ -22,6 +22,9 @@ class Release:
     def get_tag_name(self) -> str:
         return self.__tag_name
 
+    def get_body_text(self) -> str:
+        return self.__body
+
     def update(self, message: str) -> None:
         self.__session.patch(
             url=self.__url,
