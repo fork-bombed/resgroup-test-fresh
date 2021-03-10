@@ -13,6 +13,8 @@ def get_commits_between_releases(
     ) -> [commit.Commit]:
 
     commits = []
+    print(repository.get_commits())
+    print(last_release.get_creation_time(), release.get_creation_time())
     for c in repository.get_commits():
         if (c.get_date() >= last_release.get_creation_time() and
                 c.get_date() <= release.get_creation_time()):
@@ -64,6 +66,7 @@ def get_lead_time(
             datetime.timestamp(c.get_date()) - datetime.timestamp(prev_release.get_creation_time())
             for c in commits
         ]
+        print(commits, commit_times)
     return timedelta(seconds=sum(commit_times)/len(commit_times))
 
 
@@ -83,6 +86,7 @@ def get_release_template(
     else:
         lead_time_colour = 'success'
     prev_lead_time = get_lead_time(prev_release, repo)
+    print(lead_time, prev_lead_time, lead_time - prev_lead_time, prev_lead_time - lead_time)
     if lead_time > prev_lead_time:
         lead_time_difference = ''.join(['+',format_urlsafe_time(lead_time - prev_lead_time)])
         lead_time_difference_colour = 'critical'
@@ -113,7 +117,11 @@ if __name__ == "__main__":
     client = github.Github(token)
     repository = client.get_repository(repo)
     release = repository.get_latest_release()
-    prev_release = repository.get_releases()[1]
+    releases = repository.get_releases()
+    if len(releases) > 1:
+        prev_release = releases[1]
+    else:
+        prev_release = release
     release.update(
         message=get_release_template(
             release=release, 
