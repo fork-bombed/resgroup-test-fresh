@@ -64,6 +64,7 @@ def get_lead_time(
             datetime.timestamp(c.get_date()) - datetime.timestamp(prev_release.get_creation_time())
             for c in commits
         ]
+        print(commits, commit_times)
     return timedelta(seconds=sum(commit_times)/len(commit_times))
 
 
