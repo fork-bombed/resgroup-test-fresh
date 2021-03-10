@@ -36,7 +36,7 @@ def format_urlsafe_time(td: timedelta) -> str:
 
 
 def get_lead_time(
-        release: release.Release, 
+        release: release.Release,
         repository: repository.Repository
     ) -> timedelta:
 
@@ -84,7 +84,7 @@ def get_release_template(
         lead_time_colour = 'success'
     prev_lead_time = get_lead_time(prev_release, repo)
     if lead_time > prev_lead_time:
-        lead_time_difference = format_urlsafe_time(lead_time - prev_lead_time)
+        lead_time_difference = ''.join(['+',format_urlsafe_time(lead_time - prev_lead_time)])
         lead_time_difference_colour = 'critical'
     else:
         lead_time_difference = ''.join(['--',format_urlsafe_time(prev_lead_time - lead_time)])
