@@ -91,7 +91,7 @@ def get_release_template(
         lead_time_colour = 'success'
     if prev_release:
         prev_lead_time = get_lead_time(prev_release, repo)
-        prev_version = prev_release.get_tage_name()
+        prev_version = prev_release.get_tag_name()
         if lead_time > prev_lead_time:
             lead_time_difference = ''.join(['+',format_urlsafe_time(lead_time - prev_lead_time)])
             lead_time_difference_colour = 'critical'
@@ -99,7 +99,7 @@ def get_release_template(
             lead_time_difference = ''.join(['--',format_urlsafe_time(prev_lead_time - lead_time)])
             lead_time_difference_colour = 'success'
     else:
-        prev_version = 'start'
+        prev_version = release.get_tag_name()
         lead_time_difference = '0'
         lead_time_difference_colour = 'yellow'
 
