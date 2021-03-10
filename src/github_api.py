@@ -83,6 +83,7 @@ def get_release_template(
     else:
         lead_time_colour = 'success'
     prev_lead_time = get_lead_time(prev_release, repo)
+    print(lead_time, prev_lead_time, lead_time - prev_lead_time, prev_lead_time - lead_time)
     if lead_time > prev_lead_time:
         lead_time_difference = ''.join(['+',format_urlsafe_time(lead_time - prev_lead_time)])
         lead_time_difference_colour = 'critical'
