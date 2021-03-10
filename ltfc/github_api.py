@@ -76,7 +76,7 @@ def get_release_template(
         repo: repository.Repository
     ) -> str:
 
-    with open('src/templates/default.md') as file:
+    with open('ltfc/templates/default.md') as file:
         template = file.read()
     lead_time = get_lead_time(release, repo)
     if lead_time.days >= 30:
